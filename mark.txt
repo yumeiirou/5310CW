@@ -4,7 +4,7 @@
 * [✓] Configure the network interfaces and IP addresses for every node.
 * [✓] Configure static routes for all hosts and routers.
 * [✓] Configure link characteristics (bandwidth, delay, packet loss) based on the specifications in the Figure above.
-* [ ] Ensure all hosts can communicate with each other.
+* [✓] Ensure all hosts can communicate with each other.
 
 # Task 2
 

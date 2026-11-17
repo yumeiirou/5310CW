@@ -5,6 +5,7 @@ from mininet.net import Mininet
 from mininet.cli import CLI
 from mininet.nodelib import LinuxBridge
 from mininet.log import setLogLevel
+from mininet.link import TCLink  # add on via moodle for the loss/latency etc
 
 setLogLevel('info')
 
@@ -104,7 +105,7 @@ class DNSTopology(Topo):
         self.addLink(router2, s4, intfName1='router2-eth2',
                      params1={'ip': '10.0.2.1/24'})
         self.addLink(router2, s5, intfName1='router2-eth3',
-                     params1={'ip': '10.0.3.1/24'})
+                     params1={'ip': '10.0.3.1/24'}, delay='100ms', loss=10)
 
         # adding DNS servers to switches
         self.addLink(s2, root)
@@ -119,7 +120,8 @@ topos = {'dnsTopology': (lambda: DNSTopology())}
 
 
 def main():
-    net = Mininet(topo=DNSTopology(), switch=LinuxBridge, controller=None)
+    net = Mininet(topo=DNSTopology(), switch=LinuxBridge,
+                  controller=None, link=TCLink)
     net.start()
     CLI(net)
     net.stop()

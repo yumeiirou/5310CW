@@ -63,9 +63,26 @@ class DNSTopology(Topo):
                             defaultRoute='via 192.168.0.1')
         s1 = self.addSwitch('s1')
         self.addLink(host, s1)
-
         root = self.addHost('root', cls=DNSServer, ip='10.0.0.2/24')
         self.addLink(root, s1)
+
+        # TASK ONE ADDED TOPOLOGY
+
+        # adding switches
+        s2 = self.addSwitch('s2')
+        s3 = self.addSwitch('s3')
+        s4 = self.addSwitch('s4')
+        s5 = self.addSwitch('s5')
+
+        # adding DNS servers
+        tld = self.addHost('tld', cls=DNSServer, ip='10.0.1.2/24')
+        auth = self.addHost('auth', cls=DNSServer, ip='10.0.2.2/24')
+        losst = self.addHost('tld', cls=DNSServer, ip='10.0.3.2/24')
+
+        # adding routers
+        r1 = self.addHost('r1', cls=LinuxRouter, ip='172.16.32.1/24')
+        r2 = self.addHost('r2', cls=LinuxRouter, ip='172.16.32.2/24')
+
 
 # the topologies accessible to the mn tool's `--topo` flag
 # note: if using the Dockerfile, this must be the same as in the Dockerfile

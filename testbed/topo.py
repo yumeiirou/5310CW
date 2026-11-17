@@ -81,20 +81,36 @@ class DNSTopology(Topo):
         lossy = self.addHost('lossy', cls=DNSServer,
                              ip='10.0.3.2/24', defaultRoute='via 10.0.3.1')
 
-        # adding routers
-        dns_gates = ["10.0.0.1/24", "10.0.1.1/24",
-                     "10.0.2.1/24", "10.0.3.1/24"]
-        r1 = self.addHost('r1', cls=LinuxRouter, ip=None,
-                          routes=[(gate, "172.16.32.2") for gate in dns_gates])
-        r2 = self.addHost('r2', cls=LinuxRouter, ip=None,
-                          routes=[("192.168.0.0/24", "172.16.32.1")])
+        # adding routers + static routes
+        dns_gates = ['10.0.0.0/24', '10.0.1.0/24',
+                     '10.0.2.0/24', '10.0.3.0/24']
+        router1 = self.addHost('router1', cls=LinuxRouter, ip=None,
+                               routes=[(gate, '172.16.32.2') for gate in dns_gates])
+        router2 = self.addHost('router2', cls=LinuxRouter, ip=None,
+                               routes=[('192.168.0.0/24', '172.16.32.1')])
 
-        # adding host, s1, router1 links
+        # adding host, s1, router1 (to router2) links
         self.addLink(host, s1)
-        self.addLink(s1, r1, intfName2="router1-eth0",
-                     params2={"ip: 192.168.0.1/24"})
-        self.addLink(r1, r2, intfName1="router1-eth1",
-                     intfName2="router2-eth0", params1={"ip: 172.16.32.1/24"}, params2={"ip: 172.16.32.2/24"})
+        self.addLink(s1, router1, intfName2='router1-eth0',
+                     params2={'ip': '192.168.0.1/24'})
+        self.addLink(router1, router2, intfName1='router1-eth1',
+                     intfName2='router2-eth0', params1={'ip': '172.16.32.1/16'}, params2={'ip': '172.16.32.2/16'})
+
+        # adding router2 to switch links
+        self.addLink(router2, s2, intfName1='router2-eth4',
+                     params1={'ip': '10.0.0.1/24'})
+        self.addLink(router2, s3, intfName1='router2-eth1',
+                     params1={'ip': '10.0.1.1/24'})
+        self.addLink(router2, s4, intfName1='router2-eth2',
+                     params1={'ip': '10.0.2.1/24'})
+        self.addLink(router2, s5, intfName1='router2-eth3',
+                     params1={'ip': '10.0.3.1/24'})
+
+        # adding DNS servers to switches
+        self.addLink(s2, root)
+        self.addLink(s3, tld)
+        self.addLink(s4, auth)
+        self.addLink(s5, lossy)
 
 
 # the topologies accessible to the mn tool's `--topo` flag

@@ -1,6 +1,6 @@
 # Task 1
 
-* [ ] Update the topology file and include all the nodes in the figure above.
+* [✓] Update the topology file and include all the nodes in the figure above.
 * [ ] Configure the network interfaces and IP addresses for every node.
 * [ ] Configure static routes for all hosts and routers.
 * [ ] Configure link characteristics (bandwidth, delay, packet loss) based on the specifications in the Figure above.

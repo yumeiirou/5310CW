@@ -1,0 +1,24 @@
+$TTL 300
+
+b80.sandt.lab. IN SOA ns.b80.sandt.lab. hostmaster.root. (
+    2026082802 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+b80.sandt.lab.     IN NS ns.b80.sandt.lab.
+ns.b80.sandt.lab. IN A  10.0.1.2
+www.b80.sandt.lab. IN A  192.168.1.101
+dev.b80.sandt.lab. IN A  192.168.1.102
+printer.b80.sandt.lab. IN A  192.168.1.103
+
+workstation.b80.sandt.lab. IN CNAME workstation1.b80.sandt.lab.
+workstation1.b80.sandt.lab. IN A  192.168.1.104
+workstation1.b80.sandt.lab. IN TXT "Presenter machine"
+
+mail.b80.sandt.lab. IN A  192.168.1.105
+b80.sandt.lab. IN MX 10 mail.b80.sandt.lab.
+b80.sandt.lab. IN TXT "b80 Science and Technology domain"
+

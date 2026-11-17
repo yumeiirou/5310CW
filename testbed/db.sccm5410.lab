@@ -1,0 +1,28 @@
+$TTL 300
+
+sccm5410.lab. IN SOA ns.sccm5410.lab. hostmaster.root. (
+    2026110702 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+sccm5410.lab.     IN NS ns.sccm5410.lab.
+ns.sccm5410.lab. IN A  10.0.3.2
+
+; mail server for sccm5410.lab
+mail1.sccm5410.lab. IN A 10.0.2.25
+mail2.sccm5410.lab. IN A 10.0.2.26
+sccm5410.lab. IN MX 10 mail1.sccm5410.lab.
+sccm5410.lab. IN MX 20 mail2.sccm5410.lab.
+
+; Dan Fitton details
+dan.sccm5410.lab. IN A 10.0.2.15
+fitton.sccm5410.lab. IN CNAME dan.sccm5410.lab.
+dan.sccm5410.lab. IN TXT "Dan Fitton"
+info.sccm5410.lab. IN TXT "Authoritative server for sccm5410.lab"
+
+; Hans Gellersen details
+hans.sccm5410.lab. IN A 10.0.2.30
+hans.sccm5410.lab. IN TXT "Hans Gellersen"

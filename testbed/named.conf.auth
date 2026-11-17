@@ -1,0 +1,26 @@
+options {
+    directory "/workspace/testbed";
+    listen-on port 53 { 10.0.2.2; };
+    listen-on-v6 { none; };
+    recursion no;
+    allow-query { any; };
+    allow-transfer { none; };
+    dnssec-validation no;
+    empty-zones-enable no;
+    pid-file "logs/auth.pid";
+};  
+
+zone "sccm5310.lab." {
+    type primary;
+    file "db.sccm5310.lab";
+};
+
+zone "infolab.lab." {
+    type primary;
+    file "db.infolab.lab";
+};
+
+zone "sandt.lab." {
+    type primary;
+    file "db.sandt.lab";
+};

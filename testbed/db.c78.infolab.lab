@@ -1,0 +1,17 @@
+$TTL 300
+
+c78.infolab.lab. IN SOA ns.c78.infolab.lab. hostmaster.root. (
+    2026110701 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+ns.c78.infolab.lab. IN A  10.0.3.2
+c78.infolab.lab.    IN NS ns.c78.infolab.lab.
+
+; Lab hosts
+workstation1.c78.infolab.lab. IN A 10.0.1.21
+workstation2.c78.infolab.lab. IN A 10.0.1.22
+printer.c78.infolab.lab.      IN A 10.0.1.30

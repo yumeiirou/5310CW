@@ -1,0 +1,15 @@
+$TTL 300
+
+sandt.lab. IN SOA ns.sandt.lab. hostmaster.root. (
+    2026110701 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+sandt.lab.    IN NS ns.sandt.lab.
+ns.sandt.lab. IN A  10.0.2.2
+
+b80.sandt.lab. IN NS ns.b80.sandt.lab.
+ns.b80.sandt.lab. IN A 10.0.1.2

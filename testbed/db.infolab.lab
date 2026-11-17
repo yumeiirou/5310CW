@@ -1,0 +1,19 @@
+$TTL 300
+
+infolab.lab. IN SOA ns.lab. hostmaster.root. (
+    2026110702 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+infolab.lab.    IN NS ns.infolab.lab.
+ns.infolab.lab. IN A  10.0.2.2
+
+c78.infolab.lab. IN NS ns1.c78.infolab.lab.
+c78.infolab.lab. IN NS ns2.c78.infolab.lab.
+ns2.c78.infolab.lab. IN A 10.0.3.2
+
+c80.infolab.lab. IN NS  ns.c80.infolab.lab.
+; ns.c80.infolab.lab. IN A 10.0.3.2

@@ -1,0 +1,17 @@
+options {
+    directory "/workspace/testbed";
+    listen-on port 53 { 10.0.0.2; };
+    listen-on-v6 { none; };
+    recursion no;
+    allow-query { any; };
+    allow-transfer { none; };
+    dnssec-validation no;
+    empty-zones-enable no;
+    pid-file "logs/root.pid";
+    message-compression no;
+};
+
+zone "." {
+    type primary;
+    file "db.root";
+};

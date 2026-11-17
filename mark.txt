@@ -1,0 +1,32 @@
+# Task 1
+
+* [ ] Update the topology file and include all the nodes in the figure above.
+* [ ] Configure the network interfaces and IP addresses for every node.
+* [ ] Configure static routes for all hosts and routers.
+* [ ] Configure link characteristics (bandwidth, delay, packet loss) based on the specifications in the Figure above.
+* [ ] Ensure all hosts can communicate with each other.
+
+# Task 2
+
+* [ ] Implement the `encode_name` function to serialize domain names into the DNS wire format.
+* [ ] Implement the `decode_name` function to deserialize domain names from the DNS wire format
+* [ ] Implement the `make_query` function to create a DNS query packet for a given domain name and query type.
+* [ ] Implement the `parse_response` function to parse a DNS response packet and return a `DNSMessage` object containing the parsed information.
+* [ ] Implement the `query` function to send a DNS query to a specified server and return the response as a `DNSMessage` object.
+* [ ] Ensure that your implementation can handle multiple query types (e.g., A, NS, MX) and can parse the corresponding response records correctly.
+* [ ] You can query the tld server (10.0.1.2) with `--server` and fetch the respective records.
+
+# Task 3
+
+* [ ] Implement name compression handling in the `decode_name` function.
+* [ ] Implement appropriate retry mechanisms and timeout handling for DNS queries.
+* [ ] Handle DNS error responses and absent records appropriately.
+
+# Task 4
+
+* [ ] Implement iterative DNS resolution in the `resolve_iteratively` function, starting at the root server with recursion desired switched off.
+* [ ] Handle multiple levels of referrals.
+* [ ] Handle server non-responses and errors.
+* [ ] Report potential errors in glue records.
+* [ ] Ensure correct retrieval of domain name records.
+* [ ] With `--trace`, print one line for each step: every query sent (server, name and type) and every referral followed (the addresses of the next name servers).

@@ -1,0 +1,22 @@
+options {
+    directory "/workspace/testbed";
+    listen-on port 53 { 10.0.1.2; };
+    listen-on-v6 { none; };
+    recursion no;
+    allow-query { any; };
+    allow-transfer { any; };
+    dnssec-validation no;
+    empty-zones-enable no;
+    message-compression no;
+    pid-file "logs/tld.pid";
+};  
+
+zone "lab." {
+    type primary;
+    file "db.lab";
+};
+
+zone "b80.sandt.lab." {
+    type primary;
+    file "db.b80.sandt.lab";
+};

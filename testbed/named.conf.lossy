@@ -1,0 +1,27 @@
+options {
+    directory "/workspace/testbed";
+    listen-on port 53 { 10.0.3.2; };
+    listen-on-v6 { none; };
+    recursion no;
+    allow-query { any; };
+    allow-transfer { any; };
+    dnssec-validation no;
+    empty-zones-enable no;
+    pid-file "logs/lossy.pid";
+};  
+
+zone "sccm5410.lab." {
+    type primary;
+    file "db.sccm5410.lab";
+};
+
+zone "c80.infolab.lab." {
+    type primary;
+    file "db.c80.infolab.lab";
+};
+
+zone "c78.infolab.lab." {
+    type primary;
+    file "db.c78.infolab.lab";
+};
+

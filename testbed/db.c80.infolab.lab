@@ -1,0 +1,35 @@
+$TTL 300
+
+c80.infolab.lab. IN SOA ns.c80.infolab.lab. hostmaster.root. (
+    2026082802 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+c80.infolab.lab.    IN NS ns.c80.infolab.lab.
+ns.c80.infolab.lab. IN A  10.0.3.2
+
+; CNAME loop
+loop1.c80.infolab.lab.     IN CNAME loop2.c80.infolab.lab.
+loop2.c80.infolab.lab.     IN CNAME loop1.c80.infolab.lab.
+
+; CNAME to a name that does not exist
+dangling.c80.infolab.lab.  IN CNAME missing.c80.infolab.lab.
+
+; long CNAME chain
+chain1.c80.infolab.lab.    IN CNAME chain2.c80.infolab.lab.
+chain2.c80.infolab.lab.    IN CNAME chain3.c80.infolab.lab.
+chain3.c80.infolab.lab.    IN CNAME chain4.c80.infolab.lab.
+chain4.c80.infolab.lab.    IN CNAME chain5.c80.infolab.lab.
+chain5.c80.infolab.lab.    IN A     10.0.2.60
+
+; MX pointing at a CNAME and at a missing host
+c80.infolab.lab.           IN MX 10 loop1.c80.infolab.lab.
+c80.infolab.lab.           IN MX 20 nomail.c80.infolab.lab.
+
+; Lab hosts
+workstation1.c80.infolab.lab. IN A 10.0.3.20
+workstation2.c80.infolab.lab. IN A 10.0.3.21
+printer.c80.infolab.lab.      IN A 10.0.3.30

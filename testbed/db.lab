@@ -1,0 +1,38 @@
+$TTL 300
+
+lab. IN SOA ns.lab. hostmaster.root. (
+    2026110702 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+lab.    IN NS ns.lab.
+ns.lab. IN A  10.0.1.2
+
+sccm5310.lab. IN NS ns.sccm5310.lab.
+ns.sccm5310.lab. IN A 10.0.2.2
+
+sccm5410.lab. IN NS ns.sccm5410.lab.
+ns.sccm5410.lab. IN A 10.0.3.2
+
+sandt.lab. IN NS ns.sandt.lab.
+ns.sandt.lab. IN A 10.0.2.2
+
+; records owned directly by the lab. zone
+lab.           IN MX    10 mx1.lab.
+lab.           IN TXT   "v=spf1 mx -all"
+info.lab.      IN TXT   "TLD server for the SCCM5310 testbed"
+mx1.lab.       IN A     10.0.1.10
+mx2.lab.       IN A     10.0.1.11
+www.lab.       IN A     10.0.1.20
+registry.lab.  IN A     10.0.1.30
+portal.lab.    IN CNAME www.lab.
+whois.lab.     IN CNAME registry.lab.
+
+infolab.lab. IN NS ns.infolab.lab.
+ns.infolab.lab. IN A 10.0.2.2
+
+lens.lab. IN NS ns.lens.lab.
+ns.lens.lab. IN A 10.0.2.2

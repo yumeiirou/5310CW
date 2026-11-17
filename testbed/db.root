@@ -1,0 +1,15 @@
+$TTL 300
+
+@ IN SOA ns.root. hostmaster.root. (
+    2026082801 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+@        IN NS ns.root.
+ns.root. IN A  10.0.0.2
+
+ns.lab. IN A  10.0.1.2
+lab.    IN NS ns.lab.

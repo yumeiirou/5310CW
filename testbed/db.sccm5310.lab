@@ -1,0 +1,30 @@
+$TTL 300
+
+sccm5310.lab. IN SOA ns.sccm5310.lab. hostmaster.root. (
+    2026082801 ; serial
+    3600       ; refresh
+    600        ; retry
+    86400      ; expire
+    300        ; negative cache TTL
+)
+
+sccm5310.lab.    IN NS ns.sccm5310.lab.
+ns.sccm5310.lab. IN A  10.0.2.2
+mailhost.sccm5310.lab. IN A 10.250.254.1
+web.sccm5310.lab. IN A 10.0.2.10
+info.sccm5310.lab. IN TXT "Authoritative server for sccm5310.lab"
+mail1.sccm5310.lab. IN A 10.0.2.25
+mail2.sccm5310.lab. IN A 10.0.2.26
+sccm5310.lab. IN MX 10 mail1.sccm5310.lab.
+sccm5310.lab. IN MX 20 mail2.sccm5310.lab.
+
+charalampos.sccm5310.lab. IN CNAME haris.sccm5310.lab.
+haris.sccm5310.lab. IN A 10.0.2.20
+haris.sccm5310.lab. IN TXT "Haris Rotsos"
+
+onur.sccm5310.lab. IN A 10.0.2.30
+ascigil.sccm5310.lab. IN CNAME onur.sccm5310.lab.
+onur.sccm5310.lab. IN TXT "Onur Ascigil"
+
+
+

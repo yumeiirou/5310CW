@@ -24,7 +24,27 @@ def fqdn(name: str) -> str:
 
 def encode_name(name: str) -> bytes:
     """Encode an uncompressed QNAME. Provided as a starting point."""
-    raise NotImplementedError
+
+    # getting rid of trailing dot bc it's unnecessary to have
+    if name.endswith("."):
+        name = name[:-1]
+
+    encoded = bytearray()
+
+    # splitting domain name by section
+    for letter in name.split("."):
+        # ( assuming input string is ascii, will change if it poses errors)
+        data = letter.encode("ascii")
+        # small error proofing if data ends up being empty
+        if not data:
+            raise ValueError(f"empty {name!r} :(")
+        encoded.append(len(data))  # length of the byte
+        encoded += data  # label of the byte
+
+    # terminates root label?
+    encoded.append(0)
+
+    return bytes(encoded)
 
 
 def decode_name(packet: bytes, offset: int) -> tuple[str, int]:
